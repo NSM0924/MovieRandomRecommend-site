@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+*{
+    margin: 0;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.main{
+    width: 100%;
+    height: calc( 100% - 102px );
+    padding-top: 102px;
+    background: linear-gradient(to bottom,white,white, rgb(184, 184, 184));
+    font-family: 'Do Hyeon', sans-serif;
+}
+.infoBox{
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+#poster{
+    width: 250px;
+    margin-right: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 370px;
+    user-select: none;
+}
+#info{
+    width: 60%;
+    font-size: 20px;
+    display: inline-block;
+}
+#info span{
+    font-weight: bold;
+}
+#title{
+    margin-bottom: 20px;
+}
+#BM_btn{
+    margin-left: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+.plot{
+    margin-top: 20px;
+}
+.storyPlus{
+    font-weight: normal;
+    cursor: pointer;
+    user-select: none;
+}
+#storyPlus_box{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 100;
+    display: none;
+}
+#storyPlus_box>div{
+    margin: 150px auto;
+    width: 40%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+.storyPlus_btn{
+    text-align: right;
+    user-select: none;
+    font-size: 25px;
+    font-weight: bold;
+}
+.storyPlus_btn>div{
+    color: red;
+    cursor: pointer;
+    display: inline-block;
+}
+#storyPlus_text{
+    margin-top: 20px;
+    text-align: justify;
+}
+#kmdbLink{
+    user-select: none;
+    margin-top: 30px;
+    font-size: 15px;
+}
+.keyword{
+    margin: 50px 0 10px;
+}
+#keywordBox{
+    height: 92px;
+    padding: 10px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+#keywordBox div{
+    user-select: none;
+    text-align: center;
+    margin: 3px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    height: 200px;
+    width: 100%;
+    background: rgb(22, 22, 22);
+}
+
+.fnb{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.fab {
+    font-size: 30px;
+    color: rgb(122, 122, 122);
+    margin: 10px;
+}
+
+.fab:hover{
+    color: white;
+}
+.address{
+    color: rgb(122, 122, 122);
+}
+.copy{
+    color: rgb(122, 122, 122);
+}

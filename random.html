@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/random.css">
+    <title>Hamster Studio | 랜덤 추천</title>
+    <script src="https://kit.fontawesome.com/1cce07716b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logoBox"><a href="./main.html"><h1>Hamster Studio</h1></a></div>
+        <div id="menu">
+            <div>
+                <p><a href="./random.html">랜덤 추천</a></p>
+                <p><a href="./bookmark.html">북마크</a></p>
+                <p><a href="./search.html">영화 검색</a></p>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="infoBox">
+            <img src="./images/no-img.png" alt="posterImg" id="poster" onclick="imgNext()">
+            <div id="info">
+                <div id="title">
+                    <h2></h2>
+                    <p></p>
+                </div>
+                <p><span id="rating"></span></p>
+                <p id="genreText"></p>
+                <div class="plot">
+                    <p><span>줄거리</span></p>
+                    <p id="story"></p>
+                    <div id="storyPlus_box">
+                        <div>
+                            <div class="storyPlus_btn">
+                                <div onclick="storyPlus_click()">X</div>
+                            </div>
+                            <p id="storyPlus_text"></p>
+                        </div>
+                    </div>
+                </div>
+                <p id="kmdbLink"></p>
+            </div>
+            <h3 class="keyword">키워드</h3>
+            <div id="keywordBox"></div>
+        </div>
+        <div class="btnBox">
+            <div class="setting">
+                <div>
+                    <span>장르</span><select id="genreBox" onchange="changeGenre()">
+                        <option value="" selected>ALL</option>
+                        <option value="가족">가족</option>
+                        <option value="로맨스">로맨스</option>
+                        <option value="스릴러">스릴러</option>
+                        <option value="액션">액션</option>
+                        <option value="코메디">코메디</option>
+                        <option value="판타지">판타지</option>
+                        <option value="SF">SF</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="number" value="2000" id="year">
+                    <span>년 이후 영화</span>
+                </div>
+                <div>
+                    <label for="safeMode" style="cursor: pointer;">안심모드</label>
+                    <input type="checkbox" id="safeMode" checked/>
+                </div>
+            </div>
+            <button class="ranBtn" onclick="btnClick()">다시 뽑기</button>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="fnb">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <div class="address">
+                    개발자:나성민
+                    디자인:이지연
+                    아이디어:정휘찬
+                    <br>
+                    EMAIL : sdh20200405@sdh.hs.kr, sdh20200318@sdh.hs.kr, sdh20200419@sdh.hs.kr
+                </div>
+                <div class="copy">
+                    Thank you for visiting Hamster Studio.
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="./js/hearder.js"></script>
+    <script src="./js/random.js"></script>
+</body>
+</html>

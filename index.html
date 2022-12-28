@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Hamster Studio | 홈</title>
+    <script src="https://kit.fontawesome.com/1cce07716b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logoBox"><a href="./main.html"><h1>Hamster Studio</h1></a></div>
+        <div id="menu">
+            <div>
+                <p><a href="./random.html">랜덤 추천</a></p>
+                <p><a href="./bookmark.html">북마크</a></p>
+                <p><a href="./search.html">영화 검색</a></p>
+            </div>
+        </div>
+    </header>
+    <div class="mainImg">
+        <a href="./movieInfo.html" id="mainImg_link" onclick="movieInfo('F','36256')"><div id="backImg"></div></a>
+        <div class="BO_btn" style="margin-left: 10px;left: 0;top: 40%;" onclick="mainImg_prev()">&#8249;</div>
+        <div class="BO_btn" style="margin-right: 10px;right: 0;top: 40%;" onclick="mainImg_next()">&#8250;</div>
+    </div>
+    <div class="boxoffice">
+        <span id="day">일별 박스오피스</span>
+        <div class="BO">
+            <div id="boxofficeBox">
+                <div id="box0"></div>
+                <div id="box1"></div>
+                <div id="box2"></div>
+                <div id="box3"></div>
+                <div id="box4"></div>
+                <div id="box5"></div>
+                <div id="box6"></div>
+                <div id="box7"></div>
+                <div id="box8"></div>
+                <div id="box9"></div>
+            </div>
+        </div>
+        <div class="BO_btn" style="margin-left: -30px;" onclick="BO_prev()">&#8249;</div>
+        <div class="BO_btn" style="margin-right: -30px;right: 0;" onclick="BO_next()">&#8250;</div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="fnb">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <div class="address">
+                    개발자:나성민
+                    디자인:이지연
+                    아이디어:정휘찬
+                    <br>
+                    EMAIL : sdh20200405@sdh.hs.kr, sdh20200318@sdh.hs.kr, sdh20200419@sdh.hs.kr
+                </div>
+                <div class="copy">
+                    Thank you for visiting Hamster Studio.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/hearder.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

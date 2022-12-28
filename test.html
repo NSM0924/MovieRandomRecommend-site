@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="btnClick()">클릭</button>
+    <input type="number" value="2000" style="width: 50px;" id="year">
+    <button onclick="categoryBtn()">장르선택</button>
+    <div id="categoryBox" style="width: 200px;
+        background: aliceblue;
+        position: fixed;
+        display: none;">
+        <label for="가족">가족</label>
+        <input type="checkbox" id="가족"/>
+        <label for="로맨스">멜로/로맨스</label>
+        <input type="checkbox" id="로맨스"/>
+        <br>
+        <label for="스릴러">스릴러</label>
+        <input type="checkbox" id="스릴러"/>
+        <label for="액션">액션</label>
+        <input type="checkbox" id="액션"/>
+        <br>
+        <label for="코메디">코메디</label>
+        <input type="checkbox" id="코메디"/>
+        <label for="판타지">판타지</label>
+        <input type="checkbox" id="판타지"/>
+        <br>
+        <label for="SF">SF</label>
+        <input type="checkbox" id="SF"/>
+    </div>
+    
+    <br>
+    <label for="safeMode">안심모드</label>
+    <input type="checkbox" id="safeMode" checked/>
+    <br><br>
+    <img id="poster" width="200px" height="300px" onclick="imgNext()" style="cursor: pointer;">
+    <div id="result"></div>
+    
+    <h1>검색</h1>
+    <input type="text" id="search"> <button onclick="searchBtn()">검색</button>
+    <br><br>
+    <div id="result2"></div>
+    <br><br>
+    
+    <h1>박스오피스</h1>
+    <div id="result3"></div>
+
+    <script>
+        const kobisKey = "0dd314961165dfd80f20d0a1a688c812"
+        const kobisUrl = `https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${kobisKey}`
+        const kmdbKey = "99GX0A67J6468T9YJ2I8"
+        const kmdbUrl = `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=${kmdbKey}`
+        
+        let resultDiv = document.getElementById("result");
+        let poster = document.getElementById("poster");
+        let userYear = document.getElementById("year");
+        let safeMode = document.getElementById("safeMode");
+
+        let search = document.getElementById("search");
+        let poster2 = document.getElementById("poster2");
+        let resultDiv2 = document.getElementById("result2");
+        
+        let categoryBox = document.getElementById("categoryBox");
+        
+        let storageNum = 0
+        
+        let resultDiv3 = document.getElementById("result3");
+
+        let SF = document.getElementById("SF")
+        let 코메디 = document.getElementById("코메디")
+        let 액션 = document.getElementById("액션")
+        let 가족 = document.getElementById("가족")
+        let 스릴러 = document.getElementById("스릴러")
+        let 판타지 = document.getElementById("판타지")
+        let 로맨스 = document.getElementById("로맨스")
+
+
+        let postersUrl
+
+        function btnClick() {
+            let dataLength = 83160
+            let category = ""
+            
+            SF.checked?category+='&genre=SF':'';
+            코메디.checked?category+='&genre=코메디':'';
+            액션.checked?category+='&genre=액션':'';
+            가족.checked?category+='&genre=가족':'';
+            스릴러.checked?category+='&genre=스릴러':'';
+            판타지.checked?category+='&genre=판타지':'';
+            로맨스.checked?category+='&genre=로맨스':'';
+
+            fetch(kmdbUrl+`&type[]=극영화&type[]=애니메이션&listCount=1&releaseDts=${userYear.value}${category}`)
+                .then(response=>response.json())
+                .then((data)=>{
+                    dataLength = data.TotalCount
+                    console.log(dataLength)
+
+                    let ranNum = Math.floor(Math.random()*dataLength)
+                    fetch(kmdbUrl+`&type[]=극영화&type[]=애니메이션&listCount=1&releaseDts=${userYear.value}${category}&startCount=${ranNum}`)
+                        .then(response=>response.json())
+                        .then((data)=>{
+                            console.log(data);
+                            console.log(data.Data[0].Result[0].genre);
+                            let type = data.Data[0].Result[0].type
+                            let rating = data.Data[0].Result[0].rating
+                            let title = data.Data[0].Result[0].title
+                            let titleEng = data.Data[0].Result[0].titleEng
+                            let titleOrg = data.Data[0].Result[0].titleOrg
+                            postersUrl = data.Data[0].Result[0].posters.split("|")
+                            let movieId = data.Data[0].Result[0].movieId
+                            let movieSeq = data.Data[0].Result[0].movieSeq
+
+                            if(rating == ""){
+                                btnClick()
+                            }else{
+                                if (safeMode.checked) {
+                                    if (rating.includes("18") ||
+                                        rating == "제한상영가" ||
+                                        rating == "연소자 관람불가" ||
+                                        rating == "연소자불가" ||
+                                        rating == "미성년자관람불가") {
+                                        btnClick()
+                                    } else{
+                                        poster.src = `${postersUrl==""?"./no-img.png":postersUrl[0]}`
+                                        resultDiv.innerHTML = `<h3>${title.replace(/\!HS|!HE/g, "")}</h3>
+                                            <p>${titleEng==""?titleOrg:titleEng}</p>
+                                            <p>${rating}</p>
+                                            <button onclick="bookmark('${movieId}', '${movieSeq}')">즐겨찾기</button>`
+                                    }
+                                } else{
+                                    poster.src = `${postersUrl==""?"./no-img.png":postersUrl[0]}`
+                                    resultDiv.innerHTML = `<h3>${title.replace(/\!HS|!HE/g, "")}</h3>
+                                        <p>${titleEng==""?titleOrg:titleEng}</p>
+                                        <p>${rating}</p>
+                                        <button onclick="bookmark('${movieId}', '${movieSeq}')">즐겨찾기</button>`
+                                }
+                            }
+                        })
+                })
+        }
+
+        function searchBtn() {
+            resultDiv2.innerHTML = ""
+            fetch(kmdbUrl+`&title=${search.value}`)
+                .then(response=>response.json())
+                .then((data)=>{
+                    for (let i = 0; i < data.Data[0].Count; i++) {
+                        console.log(data.Data[0].Result[i])
+                        let movieId = data.Data[0].Result[i].movieId
+                        let movieSeq = data.Data[0].Result[i].movieSeq
+                        resultDiv2.innerHTML +=
+                        `<h3><a href="javascript:movieInfo('${movieId}','${movieSeq}')">
+                        ${data.Data[0].Result[i].title.replace(/\!HS|!HE/g, "")}</a></h3>`
+                    }
+                })
+        }
+
+        function movieInfo(id, seq) {
+            console.log(id, seq)
+        }
+
+
+        let i = 0;
+        function imgNext(){
+            if (postersUrl != ""){
+                if (i>=postersUrl.length) {
+                    i=0
+                    poster.src = postersUrl[i]
+                    i++
+                }else{
+                    poster.src = postersUrl[i]
+                    i++
+                }
+            }
+        }
+
+        function categoryBtn(){
+            if (categoryBox.style.display == "block") {
+                categoryBox.style.display = "none"
+            }else{
+                categoryBox.style.display = "block"
+            }
+        }
+        
+        function bookmark(id, seq) {
+            let movieCode = [id, seq]
+            storageNum++
+            localStorage.setItem(`BM${storageNum}`, JSON.stringify(movieCode))
+            localStorage.setItem(`BMnum`, storageNum)
+        }
+
+        let nowDate = new Date(); 
+        let nowYear = nowDate.getFullYear(); 
+        let nowMonth = nowDate.getMonth()+1;
+        let nowDay = nowDate.getDate();
+        if(nowMonth.length == 1){ 
+            nowMonth = "0" + nowMonth;
+        }
+        if(nowDay.length == 1){ 
+            nowDay = "0" + nowDay;
+        }
+        var oldDate = new Date(`${nowYear} ${nowMonth} ${nowDay}`)
+        oldDate.setDate(oldDate.getDate()-1);
+        let year = oldDate.getFullYear(); 
+        let month = String(oldDate.getMonth()+1);
+        let day = String(oldDate.getDate());
+        if(month.length == 1){ 
+            month = "0" + month;
+        }
+        if(day.length == 1){ 
+            day = "0" + day;
+        }
+        console.log(year,month,day);
+        fetch(kobisUrl+`&targetDt=${year}${month}${day}`)
+            .then(response=>response.json())
+            .then((data)=>{
+                console.log(data.boxOfficeResult.dailyBoxOfficeList);
+                for (let i = 0; i < 10; i++) {
+                    resultDiv3.innerHTML+=`<div>${i+1} ${data.boxOfficeResult.dailyBoxOfficeList[i].movieNm}</div>`
+                }
+            })
+    </script>
+</body>
+</html>

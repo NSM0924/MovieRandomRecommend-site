@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100;600&display=swap');
+
+*{
+    margin: 0;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-color: black;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+header{
+    user-select: none;
+    color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+.logoBox{
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+.logoBox h1{
+    padding: 10px 0;
+    font-family: 'Big Shoulders Stencil Display', cursive;
+}
+
+#menu{
+    width: 100%;
+    padding: 10px 0;
+    transition: .3s;
+}
+#menu div{
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+#menu p{
+    font-size: 17px;
+    transition: 0.5s;
+    padding: 0 5px;
+    font-weight: bold;
+}
+#menu p:hover{
+    box-shadow: inset 0 -3px 0 0 rgb(190, 190, 190);
+}
+.menuFixed{
+    position: fixed;
+    top: 0;
+    background-color: black;
+}
+
+.mainImg{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.mainImg>a{
+    width: 100%;
+}
+#backImg{
+    width: 100%;
+    height: 800px;
+    background-image: url(../images/lala.jpg);
+    background-size: cover;
+    background-position: center;
+    /* box-shadow: 0 0 24px 30px black inset; */
+    transition: .5s;
+}
+.mainImg:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(rgba(29,29,31,1) 0%,rgba(0,0,0,0) 100%);
+}
+.mainImg:after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+}
+
+.boxoffice{
+    width: 1000px;
+    padding-bottom: 30px;
+    margin: 30px auto 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    user-select: none;
+    transition: .3s;
+}
+.boxoffice #day{
+    color: white;
+    position: absolute;
+    z-index: 2;
+    top: -30px;
+    right: 10px;
+    font-size: 13px;
+}
+.BO{
+    width: 1000px;
+    overflow: hidden;
+}
+#boxofficeBox{
+    width: 2000px;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
+}
+#boxofficeBox>div{
+    width: 180px;
+    height: 310px;
+    margin: 0 10px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+.posterBox{
+    position: relative;
+}
+.posterBox img{
+    width: 180px;
+    height: 260px;
+    border-radius: 10px;
+}
+.rankNum{
+    position: absolute;
+    bottom: 0;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 10px;
+    /* text-shadow: 1px 1px 5px #000; */
+    text-shadow: -2px 0 #000,
+                0 2px #000,
+                2px 0 #000,
+                0 -2px #000;
+}
+.BO_btn{
+    color: white;
+    position: absolute;
+    height: 200px;
+    font-size: 100px;
+    opacity: .6;
+    cursor: pointer;
+    user-select: none;
+}
+.BO_btn:hover{
+    opacity: 1;
+}
+
+footer{
+    height: 200px;
+    width: 100%;
+    background: rgb(22, 22, 22);
+}
+
+.fnb{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.fab {
+    font-size: 30px;
+    color: rgb(122, 122, 122);
+    margin: 10px;
+}
+
+.fab:hover{
+    color: white;
+}
+.address{
+    color: rgb(122, 122, 122);
+}
+.copy{
+    color: rgb(122, 122, 122);
+}

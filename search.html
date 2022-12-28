@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/search.css">
+    <title>Hamster Studio | 영화 검색</title>
+    <script src="https://kit.fontawesome.com/1cce07716b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logoBox"><a href="./main.html"><h1>Hamster Studio</h1></a></div>
+        <div id="menu">
+            <div>
+                <p><a href="./random.html">랜덤 추천</a></p>
+                <p><a href="./bookmark.html">북마크</a></p>
+                <p><a href="./search.html">영화 검색</a></p>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="search">
+            <img src="./images/searchIcon.png" alt="searchIcon" onclick="search()">
+            <input type="search" placeholder="영화 이름을 입력하세요." id="userInput">
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="fnb">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <div class="address">
+                    개발자:나성민
+                    디자인:이지연
+                    아이디어:정휘찬
+                    <br>
+                    EMAIL : sdh20200405@sdh.hs.kr, sdh20200318@sdh.hs.kr, sdh20200419@sdh.hs.kr
+                </div>
+                <div class="copy">
+                    Thank you for visiting Hamster Studio.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/hearder.js"></script>
+    <script src="./js/search.js"></script>
+</body>
+</html>

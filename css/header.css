@@ -1,0 +1,45 @@
+header{
+    user-select: none;
+    color: white;
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+.logoBox{
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+.logoBox h1{
+    padding: 10px 0;
+    font-family: 'Big Shoulders Stencil Display', cursive;
+}
+
+#menu{
+    width: 100%;
+    padding: 10px 0;
+    transition: 0.3s;
+    background-color: black;
+}
+#menu div{
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+#menu p{
+    font-size: 17px;
+    transition: 0.5s;
+    padding: 0 5px;
+    font-weight: bold;
+}
+#menu p:hover{
+    box-shadow: inset 0 -3px 0 0 rgb(190, 190, 190);
+}
+.menuFixed{
+    position: fixed;
+    top: 0;
+    background-color: black;
+}
